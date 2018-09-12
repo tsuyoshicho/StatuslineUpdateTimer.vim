@@ -49,7 +49,7 @@ set statusline=%{g:StatuslineUpdateTimer#clock()}
 When use [dein](https://github.com/Shougo/dein.vim) plugin manager and [lightline](https://github.com/itchyny/lightline.vim) plugin,
 write to `dein.toml`.
 
-```vim
+```toml
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 depends = ['StatuslineUpateTimer.vim']
@@ -75,6 +75,7 @@ hook_add = '''
   function! LightlineClock()
     return g:StatuslineUpdateTimer#clock()
   endfunction
+'''
 ```
 
 ## Limitation
