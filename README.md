@@ -14,6 +14,8 @@ g:StatuslineUpdateTimer#enable
 Plugin enable/disable.
 Set as before plugin load.
 
+default value: `1`(enable) .
+
 ```vim
 g:StatuslineUpdateTimer#updatetime
 ```
@@ -37,6 +39,8 @@ g:StatuslineUpdateTimer#clock()
 ```
 
 Return formatted clock string.
+
+### Use-case
 
 #### case 1. statusline direct setting
 Write to `.vimrc`.
@@ -77,6 +81,9 @@ hook_add = '''
   endfunction
 '''
 ```
+
+#### case 3. sky_color_clock
+Setting : see [mopp/sky-color-clock.vim](https://github.com/mopp/sky-color-clock.vim)
 
 ## Limitation
 
