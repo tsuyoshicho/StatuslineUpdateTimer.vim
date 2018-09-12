@@ -29,7 +29,7 @@ g:StatuslineUpdateTimer#clockformat
 
 Clock function format(strftime style).
 
-default value: '%m/%d(%a) %H:%M'.
+default value: `'%m/%d(%a) %H:%M'`.
 
 ### Function
 ```vim
@@ -37,6 +37,45 @@ g:StatuslineUpdateTimer#clock()
 ```
 
 Return formatted clock string.
+
+#### case 1. statusline direct setting
+Write to `.vimrc`.
+
+```vim
+set statusline=%{g:StatuslineUpdateTimer#clock()}
+```
+
+#### case 2. lightline at dein
+When use [dein](https://github.com/Shougo/dein.vim) plugin manager and [lightline](https://github.com/itchyny/lightline.vim) plugin,
+write to `dein.toml`.
+
+```vim
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+depends = ['StatuslineUpateTimer.vim']
+hook_add = '''
+  let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'readonly', 'filename', 'modified' ]
+      \   ],
+      \   'right': [
+      \     ['clock'],
+      \     ['lineinfo', 'percent'],
+      \     ['fileformat', 'fileencoding', 'filetype'],
+      \   ]
+      \ },
+      \ 'component_function': {
+      \   'clock': 'LightlineClock',
+      \ },
+      \ }
+
+  function! LightlineClock()
+    return g:StatuslineUpdateTimer#clock()
+  endfunction
+```
 
 ## Limitation
 
