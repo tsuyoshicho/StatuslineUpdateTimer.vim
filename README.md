@@ -1,4 +1,4 @@
-# StatuslineUpateTimer : vim statusline periodic update plugin
+# StatuslineUpdateTimer : vim statusline periodic update plugin
 
 ## attached
 - Generic clock function - Common usage:statusline clock
