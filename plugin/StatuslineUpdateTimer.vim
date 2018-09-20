@@ -1,5 +1,5 @@
 " Vim global plugin for Statusline Update Timer
-" Last Change: 2018/09/12
+" Last Change: 2018/09/20
 " Maintainer: Tsuyoshi CHO <tsuyoshi.cho@gmail.com>
 " License: MIT License
 
@@ -21,7 +21,7 @@ let g:StatuslineUpdateTimer#updatetime = get(g:, 'StatuslineUpdateTimer#updateti
 
 " timer core function
 function! g:StatuslineUpdateTimer#timer(timer)
-  redrawstatus
+  redrawstatus!
 endfunction
 
 if has('timers') && g:StatuslineUpdateTimer#enable
