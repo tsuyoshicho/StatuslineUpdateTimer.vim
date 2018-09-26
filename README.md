@@ -3,6 +3,15 @@
 ## attached
 - Generic clock function - Common usage:statusline clock
 
+## Installation
+
+### [dein](https://github.com/Shougo/dein.vim)
+Add this section in  `dein.toml`.
+```toml
+[[plugins]]
+repo = 'tsuyoshicho/StatuslineUpdateTimer.vim'
+```
+
 ## Usage
 
 ### Option variable
@@ -82,7 +91,7 @@ hook_add = '''
 '''
 ```
 
-#### case 3. sky_color_clock
+#### case 3. sky-color-clock.vim
 Setting : see [mopp/sky-color-clock.vim](https://github.com/mopp/sky-color-clock.vim)
 
 ## Limitation
