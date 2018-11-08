@@ -13,6 +13,9 @@ repo = 'tsuyoshicho/StatuslineUpdateTimer.vim'
 ```
 
 ## Usage
+Install via vim or plugin manager.
+
+Vim statusline is updated automatically.
 
 ### Option variable
 
@@ -97,7 +100,7 @@ Setting : see [mopp/sky-color-clock.vim](https://github.com/mopp/sky-color-clock
 ## Limitation
 
 Buffer refreshed by timer.
-As a result, opening splash-string disappears.
+As a result, opening splash-string,multiline message disappears.
 
 ## Author
 - Tsuyoshi CHO (https://github.com/tsuyoshicho)

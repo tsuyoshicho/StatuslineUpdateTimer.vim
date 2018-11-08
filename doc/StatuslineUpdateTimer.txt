@@ -1,0 +1,99 @@
+*StatuslineUpdateTimer.txt*	a summary
+
+Version : Eternal beta 1
+Author  : Tsuyoshi CHO <Tsuyoshi.CHO+develop@Gmail.com>
+License : MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+==============================================================================
+CONTENTS					*StatuslineUpdateTimer-contents*
+
+INTRODUCTION			|StatuslineUpdateTimer-introduction|
+USAGE				|StatuslineUpdateTimer-usage|
+INTERFACE			|StatuslineUpdateTimer-interface|
+  VARIABLES			  |StatuslineUpdateTimer-variables|
+  FUNCTIONS			  |StatuslineUpdateTimer-functions|
+TODO				|StatuslineUpdateTimer-todo|
+CHANGELOG			|StatuslineUpdateTimer-changelog|
+
+
+==============================================================================
+INTRODUCTION					*StatuslineUpdateTimer-introduction*
+
+*StatuslineUpdateTimer* is a vim statusline periodic update plugin.
+
+Latest version:
+https://github.com/tsuyoshicho/StatuslineUpdateTimer.vim
+
+
+==============================================================================
+USAGE						*StatuslineUpdateTimer-usage*
+
+Install via vim or plugin manager.
+Vim statusline is updated automatically.
+
+==============================================================================
+INTERFACE					*StatuslineUpdateTimer-interface*
+
+------------------------------------------------------------------------------
+VARIABLES					*StatuslineUpdateTimer-variables*
+
+
+g:StatuslineUpdateTimer#enable		*g:StatuslineUpdateTimer#enable*
+	default value: 1
+	Plugin enable flag, if you need disable set as 0.
+	Set as before plugin load.
+
+g:StatuslineUpdateTimer#updatetime	*g:StatuslineUpdateTimer#updatetime*
+	default value: &updatetime
+	Timer update interval, same as `updatetime`'s unit.
+
+g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
+	default value: "%m/%d(%a) %H:%M"
+	Utility function format(strftime style).
+
+g:StatuslineUpdateTimer#timerhandler	*g:StatuslineUpdateTimer#timerhandler*
+	Internal timer handler (global for debug).
+
+------------------------------------------------------------------------------
+FUNCTIONS					*StatuslineUpdateTimer-functions*
+
+g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
+	Utility function, Usage at displaying time to statusline.
+	Define format at |g:StatuslineUpdateTimer#clockformat|.
+
+g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
+	Timer function for internal use.
+
+==============================================================================
+TODO						*StatuslineUpdateTimer-todo*
+
+- Buffer refreshed by timer. As a result, opening splash-string,multiline
+  message disappears at refreshed time.
+  Currently there are no workarounds which seems to be the operation specification of vim.
+
+==============================================================================
+CHANGELOG					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 1
+	Initial implementation.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:
