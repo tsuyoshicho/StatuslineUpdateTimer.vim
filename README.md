@@ -7,6 +7,7 @@
 
 ### [dein](https://github.com/Shougo/dein.vim)
 Add this section in  `dein.toml`.
+
 ```toml
 [[plugins]]
 repo = 'tsuyoshicho/StatuslineUpdateTimer.vim'
@@ -38,6 +39,13 @@ Set as before plugin load.
 default value: same as `updatetime`.
 
 ```vim
+g:StatuslineUpdateTimer#adjust_minute
+```
+
+Update interval adjust next min+1sec point.
+If set as enable, `g:StatuslineUpdateTimer#updatetime` are no affect.
+
+```vim
 g:StatuslineUpdateTimer#clockformat
 ```
 
@@ -46,6 +54,7 @@ Clock function format(strftime style).
 default value: `'%m/%d(%a) %H:%M'`.
 
 ### Function
+
 ```vim
 g:StatuslineUpdateTimer#clock()
 ```
