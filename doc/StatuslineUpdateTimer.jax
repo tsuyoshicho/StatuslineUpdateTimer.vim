@@ -63,6 +63,11 @@ g:StatuslineUpdateTimer#updatetime	*g:StatuslineUpdateTimer#updatetime*
 	既定値: &updatetime
 	更新時間の設定、`updatetime`と同じ単位 (ミリ秒単位) で設定可能。
 
+g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
+	既定値: 0
+	タイマーの次回発火時間を(次の分+1秒)になるように調整する。
+	この設定のとき、|g:StatuslineUpdateTimer#updatetime|は影響を与えなくなる。
+
 g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 	既定値: "%m/%d(%a) %H:%M"
 	ユーティリティ関数の書式設定(strftime スタイル)。
@@ -76,9 +81,14 @@ g:StatuslineUpdateTimer#timerhandler	*g:StatuslineUpdateTimer#timerhandler*
 g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
 	ステータスへの時刻表示のユーティリティ関数。
 	|g:StatuslineUpdateTimer#clockformat|で指定した書式で出力される文字列。
+	戻り値: 書式書き出しの時刻文字列。
 
 g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
 	内部利用のタイマー関数。
+
+g:StatuslineUpdateTimer#getInterval()		*g:StatuslineUpdateTimer#getInterval()*
+	タイマーの次回発火時間を取得するユーティリティ関数。
+	戻り値: タイマーの次回発火時間(msec)。
 
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
@@ -88,6 +98,9 @@ TODO						*StatuslineUpdateTimer-todo*
 
 ==============================================================================
 更新履歴					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 2
+	分のアジャスター処理を追加。
 
 Eternal beta 1
 	最初の実装。

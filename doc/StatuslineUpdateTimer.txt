@@ -65,6 +65,11 @@ g:StatuslineUpdateTimer#updatetime	*g:StatuslineUpdateTimer#updatetime*
 	default value: &updatetime
 	Timer update interval, same as `updatetime`'s unit.
 
+g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
+	default value: 0
+	Timer update interval adjust to fire at next minute+1sec.
+	When this is enabled, no affect |g:StatuslineUpdateTimer#updatetime.|
+
 g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 	default value: "%m/%d(%a) %H:%M"
 	Utility function format(strftime style).
@@ -78,9 +83,14 @@ FUNCTIONS					*StatuslineUpdateTimer-functions*
 g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
 	Utility function, Usage at displaying time to statusline.
 	Define format at |g:StatuslineUpdateTimer#clockformat|.
+	return: formatted time string.
 
 g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
 	Timer function for internal use.
+
+g:StatuslineUpdateTimer#getInterval()		*g:StatuslineUpdateTimer#getInterval()*
+	Utility function, timer update interval time calc.
+	return: timer interval value(msec).
 
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
@@ -91,6 +101,9 @@ TODO						*StatuslineUpdateTimer-todo*
 
 ==============================================================================
 CHANGELOG					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 2
+	Add adjuster feature.
 
 Eternal beta 1
 	Initial implementation.
