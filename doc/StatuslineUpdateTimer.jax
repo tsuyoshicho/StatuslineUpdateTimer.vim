@@ -29,6 +29,7 @@ License : MIT license  {{{
 使い方				|StatuslineUpdateTimer-usage|
 インターフェイス		|StatuslineUpdateTimer-interface|
   変数				  |StatuslineUpdateTimer-variables|
+  コマンド			  |StatuslineUpdateTimer-commands|
   関数				  |StatuslineUpdateTimer-functions|
 TODO				|StatuslineUpdateTimer-todo|
 更新履歴			|StatuslineUpdateTimer-changelog|
@@ -75,6 +76,19 @@ g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 g:StatuslineUpdateTimer#timerhandler	*g:StatuslineUpdateTimer#timerhandler*
 	内部利用のタイマーのハンドラ(デバッグ用にglobal)。
 
+
+------------------------------------------------------------------------------
+コマンド					*StatuslineUpdateTimer-commands*
+
+StatuslineUpdateStart				*StatuslineUpdateStart*
+	タイマの開始コマンド。
+	*g:StatuslineUpdateTimer#enable* が無効でも開始する。
+	停止していない場合に副作用はない。
+
+StatuslineUpdateStop				*StatuslineUpdateStop*
+	タイマの停止コマンド。
+	開始していない場合に副作用はない。
+
 ------------------------------------------------------------------------------
 関数						*StatuslineUpdateTimer-functions*
 
@@ -86,7 +100,7 @@ g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
 g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
 	内部利用のタイマー関数。
 
-g:StatuslineUpdateTimer#getInterval()		*g:StatuslineUpdateTimer#getInterval()*
+g:StatuslineUpdateTimer#getNextInterval()	*StatuslineUpdateTimer#getNextInterval()*
 	タイマーの次回発火時間を取得するユーティリティ関数。
 	戻り値: タイマーの次回発火時間(msec)。
 
@@ -98,6 +112,10 @@ TODO						*StatuslineUpdateTimer-todo*
 
 ==============================================================================
 更新履歴					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 3
+	分のアジャスター処理をインターバル時間算出処理から分離。
+	開始終了コマンドを追加。
 
 Eternal beta 2
 	分のアジャスター処理を追加。
