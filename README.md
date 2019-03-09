@@ -18,6 +18,20 @@ Install via vim or plugin manager.
 
 Vim statusline is updated automatically.
 
+### Commands
+
+When manually start.
+
+```vim
+:StatuslineUpdateStart
+```
+
+And then manually stop.
+
+```vim
+:StatuslineUpdateStop
+```
+
 ### Option variable
 
 ```vim

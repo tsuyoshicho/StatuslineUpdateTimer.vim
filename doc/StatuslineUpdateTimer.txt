@@ -29,6 +29,7 @@ INTRODUCTION			|StatuslineUpdateTimer-introduction|
 USAGE				|StatuslineUpdateTimer-usage|
 INTERFACE			|StatuslineUpdateTimer-interface|
   VARIABLES			  |StatuslineUpdateTimer-variables|
+  COMMANDS			  |StatuslineUpdateTimer-commands|
   FUNCTIONS			  |StatuslineUpdateTimer-functions|
 TODO				|StatuslineUpdateTimer-todo|
 CHANGELOG			|StatuslineUpdateTimer-changelog|
@@ -78,6 +79,18 @@ g:StatuslineUpdateTimer#timerhandler	*g:StatuslineUpdateTimer#timerhandler*
 	Internal timer handler (global for debug).
 
 ------------------------------------------------------------------------------
+COMMANDS					*StatuslineUpdateTimer-commands*
+
+StatuslineUpdateStart				*StatuslineUpdateStart*
+	Timer start command.
+	When *g:StatuslineUpdateTimer#enable* are disabled, ignore and start.
+	Timer do not sotpped, but no side-effect.
+
+StatuslineUpdateStop				*StatuslineUpdateStop*
+	Timer stop command.
+	Timer do not started, but no side-effect.
+
+------------------------------------------------------------------------------
 FUNCTIONS					*StatuslineUpdateTimer-functions*
 
 g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
@@ -88,7 +101,7 @@ g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
 g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
 	Timer function for internal use.
 
-g:StatuslineUpdateTimer#getInterval()		*g:StatuslineUpdateTimer#getInterval()*
+g:StatuslineUpdateTimer#getNextInterval()	*StatuslineUpdateTimer#getNextInterval()*
 	Utility function, timer update interval time calc.
 	return: timer interval value(msec).
 
@@ -101,6 +114,10 @@ TODO						*StatuslineUpdateTimer-todo*
 
 ==============================================================================
 CHANGELOG					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 3
+	Split adjuster feature in interval calc.
+	Add start/stop commands.
 
 Eternal beta 2
 	Add adjuster feature.

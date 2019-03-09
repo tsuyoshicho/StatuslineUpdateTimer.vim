@@ -23,33 +23,35 @@ let g:StatuslineUpdateTimer#updatetime = get(g:, 'StatuslineUpdateTimer#updateti
 " if enabled; updatetime are no affect
 let g:StatuslineUpdateTimer#adjust_minute = get(g:, 'StatuslineUpdateTimer#adjust_minute', 0)
 
+" Timer ID
+let g:StatuslineUpdateTimer#timerhandler = v:null
+
 " timer core function
 function! g:StatuslineUpdateTimer#timer(timer) abort
   redrawstatus!
 
   " restart timer : new interval time
-  let g:StatuslineUpdateTimer#timerhandler = timer_start(g:StatuslineUpdateTimer#getInterval(), function("StatuslineUpdateTimer#timer"))
+  let g:StatuslineUpdateTimer#timerhandler = timer_start(g:StatuslineUpdateTimer#getNextInterval(), function("StatuslineUpdateTimer#timer"))
 endfunction
 
-" timer interval function
-function! g:StatuslineUpdateTimer#getInterval() abort
-  let interval = g:StatuslineUpdateTimer#updatetime
-
-  " adjust next updatetime : next min 01 sec point
-  if g:StatuslineUpdateTimer#adjust_minute
-    let now = localtime()
-    " next updatetime = 1min(60sec) - current sec(ex 1min 25sec = 25sec) + 1 -> msec
-    let interval = (60 - (now % 60) + 1) * 1000
+function! s:start() abort
+  if has('timers') && (v:null == g:StatuslineUpdateTimer#timerhandler)
+    call StatuslineUpdateTimer#timer(g:StatuslineUpdateTimer#timerhandler)
   endif
-
-  " debug
-  " echom 'update time:'.interval . ' now:'.strftime('%X') . ' flag:'.g:StatuslineUpdateTimer#adjust_minute
-
-  return interval
 endfunction
+
+function! s:stop() abort
+  if has('timers') && (v:null != g:StatuslineUpdateTimer#timerhandler)
+    call timer_stop(g:StatuslineUpdateTimer#timerhandler)
+    let g:StatuslineUpdateTimer#timerhandler = v:null
+  endif
+endfunction
+
+command! -nargs=0 StatuslineUpdateStart :call <SID>start()
+command! -nargs=0 StatuslineUpdateStop  :call <SID>stop()
 
 if has('timers') && g:StatuslineUpdateTimer#enable
-  let g:StatuslineUpdateTimer#timerhandler = timer_start(g:StatuslineUpdateTimer#getInterval(), function("StatuslineUpdateTimer#timer"))
+  call StatuslineUpdateTimer#timer(g:StatuslineUpdateTimer#timerhandler)
 endif
 
 let &cpo = s:save_cpo
