@@ -74,10 +74,6 @@ g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
 g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 	default value: "%m/%d(%a) %H:%M"
 	Utility function format(strftime style).
-
-g:StatuslineUpdateTimer#timerhandler	*g:StatuslineUpdateTimer#timerhandler*
-	Internal timer handler (global for debug).
-
 ------------------------------------------------------------------------------
 COMMANDS					*StatuslineUpdateTimer-commands*
 
@@ -98,13 +94,6 @@ g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
 	Define format at |g:StatuslineUpdateTimer#clockformat|.
 	return: formatted time string.
 
-g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
-	Timer function for internal use.
-
-g:StatuslineUpdateTimer#getNextInterval()	*StatuslineUpdateTimer#getNextInterval()*
-	Utility function, timer update interval time calc.
-	return: timer interval value(msec).
-
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
 
@@ -114,6 +103,9 @@ TODO						*StatuslineUpdateTimer-todo*
 
 ==============================================================================
 CHANGELOG					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 4
+	Simplify
 
 Eternal beta 3
 	Split adjuster feature in interval calc.

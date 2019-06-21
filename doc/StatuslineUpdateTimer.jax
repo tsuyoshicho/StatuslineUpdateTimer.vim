@@ -73,10 +73,6 @@ g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 	既定値: "%m/%d(%a) %H:%M"
 	ユーティリティ関数の書式設定(strftime スタイル)。
 
-g:StatuslineUpdateTimer#timerhandler	*g:StatuslineUpdateTimer#timerhandler*
-	内部利用のタイマーのハンドラ(デバッグ用にglobal)。
-
-
 ------------------------------------------------------------------------------
 コマンド					*StatuslineUpdateTimer-commands*
 
@@ -97,13 +93,6 @@ g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
 	|g:StatuslineUpdateTimer#clockformat|で指定した書式で出力される文字列。
 	戻り値: 書式書き出しの時刻文字列。
 
-g:StatuslineUpdateTimer#timer({timer})	*g:StatuslineUpdateTimer#timer()*
-	内部利用のタイマー関数。
-
-g:StatuslineUpdateTimer#getNextInterval()	*StatuslineUpdateTimer#getNextInterval()*
-	タイマーの次回発火時間を取得するユーティリティ関数。
-	戻り値: タイマーの次回発火時間(msec)。
-
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
 
@@ -112,6 +101,9 @@ TODO						*StatuslineUpdateTimer-todo*
 
 ==============================================================================
 更新履歴					*StatuslineUpdateTimer-changelog*
+
+Eternal beta 4
+	シンプル化
 
 Eternal beta 3
 	分のアジャスター処理をインターバル時間算出処理から分離。
