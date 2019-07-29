@@ -78,7 +78,7 @@ g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 
 StatuslineUpdateStart				*StatuslineUpdateStart*
 	タイマの開始コマンド。
-	*g:StatuslineUpdateTimer#enable* が無効でも開始する。
+	|g:StatuslineUpdateTimer#enable| が無効でも開始する。
 	停止していない場合に副作用はない。
 
 StatuslineUpdateStop				*StatuslineUpdateStop*

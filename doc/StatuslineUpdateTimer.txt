@@ -79,7 +79,7 @@ COMMANDS					*StatuslineUpdateTimer-commands*
 
 StatuslineUpdateStart				*StatuslineUpdateStart*
 	Timer start command.
-	When *g:StatuslineUpdateTimer#enable* are disabled, ignore and start.
+	When |g:StatuslineUpdateTimer#enable| are disabled, ignore and start.
 	Timer do not sotpped, but no side-effect.
 
 StatuslineUpdateStop				*StatuslineUpdateStop*
