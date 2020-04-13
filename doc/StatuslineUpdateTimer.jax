@@ -55,34 +55,43 @@ vim 本体、もしくはプラグインマネージャで導入してくださ�
 ------------------------------------------------------------------------------
 変数						*StatuslineUpdateTimer-variables*
 
-g:StatuslineUpdateTimer#enable		*g:StatuslineUpdateTimer#enable*
+
+						*g:StatuslineUpdateTimer#enable*
+g:StatuslineUpdateTimer#enable
 	既定値: 1
 	プラグインの有効化フラグ、無効化のためにある。
 	無効を設定するなら読み込み前に設定すること。
 
-g:StatuslineUpdateTimer#updatetime	*g:StatuslineUpdateTimer#updatetime*
+						*g:StatuslineUpdateTimer#updatetime*
+g:StatuslineUpdateTimer#updatetime
 	既定値: &updatetime
 	更新時間の設定、`updatetime`と同じ単位 (ミリ秒単位) で設定可能。
 
-g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
+						*g:StatuslineUpdateTimer#adjust_minute*
+g:StatuslineUpdateTimer#adjust_minute
 	既定値: 0
 	タイマーの次回発火時間を(次の分+1秒)になるように調整する。
 	この設定のとき、|g:StatuslineUpdateTimer#updatetime|は影響を与えなくなる。
 
-g:StatuslineUpdateTimer#interval_function*g:StatuslineUpdateTimer#interval_function*
+						*g:StatuslineUpdateTimer#interval_function*
+g:StatuslineUpdateTimer#interval_function
 	既定値: (内部関数)
 	定期的に実行される関数の参照。
 	デフォルトでは `redrawstatus!` が実行されるようになっている。
 	独自関数に置き換え可能。
 
-g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
+						*g:StatuslineUpdateTimer#clockformat*
+g:StatuslineUpdateTimer#clockformat
 	既定値: "%m/%d(%a) %H:%M"
 	ユーティリティ関数の書式設定(strftime スタイル)。
+
 
 ------------------------------------------------------------------------------
 コマンド					*StatuslineUpdateTimer-commands*
 
-StatuslineUpdateStart				*StatuslineUpdateStart*
+
+						*StatuslineUpdateStart*
+StatuslineUpdateStart
 	タイマの開始コマンド。
 	|g:StatuslineUpdateTimer#enable| が無効でも開始する。
 	停止していない場合に副作用はない。
@@ -91,29 +100,40 @@ StatuslineUpdateStop				*StatuslineUpdateStop*
 	タイマの停止コマンド。
 	開始していない場合に副作用はない。
 
+
 ------------------------------------------------------------------------------
 関数						*StatuslineUpdateTimer-functions*
 
-StatuslineUpdateTimer#clock()			*StatuslineUpdateTimer#clock()*
+
+						*StatuslineUpdateTimer#clock()*
+StatuslineUpdateTimer#clock()
 	ステータスへの時刻表示のユーティリティ関数。
 	|g:StatuslineUpdateTimer#clockformat|で指定した書式で出力される文字列。
 	戻り値: 書式書き出しの時刻文字列。
 
-StatuslineUpdateTimer#emoji_clock		*StatuslineUpdateTimer#emoji_clock*
+						*StatuslineUpdateTimer#emoji_clock*
+StatuslineUpdateTimer#emoji_clock
 	ステータスへのemoji時刻表示のユーティリティ関数。
 	戻り値: 現在の時刻の12時間表示のemoji。
+
 
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
 
+
 - タイマでのリフレッシュにより起動時のスプラッシュ、複数行メッセージなどが更新時に消える。
   現状はvimの動作仕様と思われる、回避策なし。
+
 
 ==============================================================================
 更新履歴					*StatuslineUpdateTimer-changelog*
 
+
+Eternal beta 5
+	不具合修正とemoji clock追加。
+
 Eternal beta 4
-	シンプル化
+	シンプル化。
 
 Eternal beta 3
 	分のアジャスター処理をインターバル時間算出処理から分離。
@@ -124,6 +144,7 @@ Eternal beta 2
 
 Eternal beta 1
 	最初の実装。
+
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
