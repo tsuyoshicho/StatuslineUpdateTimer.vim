@@ -69,6 +69,12 @@ g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
 	タイマーの次回発火時間を(次の分+1秒)になるように調整する。
 	この設定のとき、|g:StatuslineUpdateTimer#updatetime|は影響を与えなくなる。
 
+g:StatuslineUpdateTimer#interval_function*g:StatuslineUpdateTimer#interval_function*
+	既定値: (内部関数)
+	定期的に実行される関数の参照。
+	デフォルトでは `redrawstatus!` が実行されるようになっている。
+	独自関数に置き換え可能。
+
 g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 	既定値: "%m/%d(%a) %H:%M"
 	ユーティリティ関数の書式設定(strftime スタイル)。
@@ -88,10 +94,14 @@ StatuslineUpdateStop				*StatuslineUpdateStop*
 ------------------------------------------------------------------------------
 関数						*StatuslineUpdateTimer-functions*
 
-g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
+StatuslineUpdateTimer#clock()			*StatuslineUpdateTimer#clock()*
 	ステータスへの時刻表示のユーティリティ関数。
 	|g:StatuslineUpdateTimer#clockformat|で指定した書式で出力される文字列。
 	戻り値: 書式書き出しの時刻文字列。
+
+StatuslineUpdateTimer#emoji_clock		*StatuslineUpdateTimer#emoji_clock*
+	ステータスへのemoji時刻表示のユーティリティ関数。
+	戻り値: 現在の時刻の12時間表示のemoji。
 
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*

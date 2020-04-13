@@ -3,7 +3,7 @@
 " Maintainer: Tsuyoshi CHO <tsuyoshi.cho@gmail.com>
 " License: MIT License
 
-if exists("g:loaded_StatuslineUpdateTimer")
+if exists('g:loaded_StatuslineUpdateTimer') || !has('timers')
   finish
 endif
 let g:loaded_StatuslineUpdateTimer = 1
@@ -23,6 +23,13 @@ let g:StatuslineUpdateTimer#updatetime = get(g:, 'StatuslineUpdateTimer#updateti
 " if enabled; updatetime are no affect
 let g:StatuslineUpdateTimer#adjust_minute = get(g:, 'StatuslineUpdateTimer#adjust_minute', 0)
 
+" timer interval process function
+function! s:default_interval_function() abort
+  redrawstatus!
+endfunction
+
+let g:StatuslineUpdateTimer#interval_function = get(g:, 'StatuslineUpdateTimer#interval_function', function('s:default_interval_function'))
+
 " Timer
 
 " Timer ID
@@ -30,7 +37,7 @@ let s:timerhandler = v:null
 
 " base    base interval time (sec)
 " offset  offset time        (sec)
-function! s:getPeriodicInterval(base,offset) abort
+function! s:getPeriodicInterval(base, offset) abort
   let now = localtime()
 
   let interval = (a:base - (now % a:base) + a:offset)
@@ -38,44 +45,46 @@ function! s:getPeriodicInterval(base,offset) abort
   return interval
 endfunction
 
-" timer interval function(msec)
-function! s:getNextInterval() abort
-  let interval = g:StatuslineUpdateTimer#updatetime
+" timer interval timing function(msec)
+function! s:getNextIntervalmsec() abort
+  let interval_ms = g:StatuslineUpdateTimer#updatetime
 
   " adjust next updatetime : next min 01 sec point
   if g:StatuslineUpdateTimer#adjust_minute
     " next updatetime = 1min(60sec) - current sec(ex 1min 25sec = 25sec) + 1 = 36sec -> msec
-    let interval = s:getPeriodicInterval(60,1) * 1000
+    let interval_ms = s:getPeriodicInterval(60, 1) * 1000
   endif
 
-  return interval
+  return interval_ms
 endfunction
 
 " timer core function
 function! s:timer(timer) abort
-  redrawstatus!
+  if exists('g:StatuslineUpdateTimer#interval_function')
+      \ && (type(g:StatuslineUpdateTimer#interval_function) == v:t_func)
+    call call(g:StatuslineUpdateTimer#interval_function,[])
+  endif
 
   " restart timer : new interval time
-  let Callback =function("s:timer")
-  let s:timerhandler = timer_start(s:getNextInterval(), Callback)
+  let s:timerhandler = timer_start(s:getNextIntervalmsec(), function("s:timer"))
 endfunction
 
-if has('timers') && g:StatuslineUpdateTimer#enable
+if g:StatuslineUpdateTimer#enable
   call s:timer(s:timerhandler)
 endif
 
 " Command
 
 function! s:start() abort
-  if has('timers') && (v:null == s:timerhandler)
+  if s:timerhandler is? v:null
     call s:timer(s:timerhandler)
   endif
 endfunction
 
 function! s:stop() abort
-  if has('timers') && (v:null != g:StatuslineUpdateTimer#timerhandler)
-    call timer_stop(g:StatuslineUpdateTimer#timerhandler)
-    let g:StatuslineUpdateTimer#timerhandler = v:null
+  if s:timerhandler isnot? v:null
+    call timer_stop(s:timerhandler)
+    let s:timerhandler = v:null
   endif
 endfunction
 

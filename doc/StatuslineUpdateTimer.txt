@@ -71,9 +71,16 @@ g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
 	Timer update interval adjust to fire at next minute+1sec.
 	When this is enabled, no affect |g:StatuslineUpdateTimer#updatetime.|
 
+g:StatuslineUpdateTimer#interval_function*g:StatuslineUpdateTimer#interval_function*
+	default value: (internal function)
+	Periodic interval called function.
+	Default function call `redrawstatus!`.
+	May set as custom function.
+
 g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
 	default value: "%m/%d(%a) %H:%M"
 	Utility function format(strftime style).
+
 ------------------------------------------------------------------------------
 COMMANDS					*StatuslineUpdateTimer-commands*
 
@@ -89,10 +96,14 @@ StatuslineUpdateStop				*StatuslineUpdateStop*
 ------------------------------------------------------------------------------
 FUNCTIONS					*StatuslineUpdateTimer-functions*
 
-g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
+StatuslineUpdateTimer#clock()			*StatuslineUpdateTimer#clock()*
 	Utility function, Usage at displaying time to statusline.
 	Define format at |g:StatuslineUpdateTimer#clockformat|.
 	return: formatted time string.
+
+StatuslineUpdateTimer#emoji_clock		*StatuslineUpdateTimer#emoji_clock*
+	Utility function, Usage at displaying emoji clock to statusline.
+	return: Current time's emoji of the 12-hour.
 
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*

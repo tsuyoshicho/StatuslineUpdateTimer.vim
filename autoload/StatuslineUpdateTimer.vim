@@ -3,11 +3,6 @@
 " Maintainer: Tsuyoshi CHO <tsuyoshi.cho@gmail.com>
 " License: MIT License
 
-if exists("g:autoloaded_StatuslineUpdateTimer")
-  finish
-endif
-let g:autoloaded_StatuslineUpdateTimer = 1
-
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -17,8 +12,28 @@ set cpo&vim
 let g:StatuslineUpdateTimer#clockformat = get(g:, 'StatuslineUpdateTimer#clockformat', '%m/%d(%a) %H:%M')
 
 " generic status clock
-function! g:StatuslineUpdateTimer#clock()
+function! StatuslineUpdateTimer#clock()
   return strftime(g:StatuslineUpdateTimer#clockformat, localtime())
+endfunction
+
+let s:emoji_clock = [
+  \ '🕛',
+  \ '🕐',
+  \ '🕑',
+  \ '🕒',
+  \ '🕓',
+  \ '🕔',
+  \ '🕕',
+  \ '🕖',
+  \ '🕗',
+  \ '🕘',
+  \ '🕙',
+  \ '🕚',
+  \ ]
+
+" generic status emoji clock
+function! StatuslineUpdateTimer#emoji_clock()
+  return s:emoji_clock[str2nr(strftime('%H', localtime())) % len(s:emoji_clock)]
 endfunction
 
 let &cpo = s:save_cpo
