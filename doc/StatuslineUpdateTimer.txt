@@ -57,42 +57,67 @@ INTERFACE					*StatuslineUpdateTimer-interface*
 VARIABLES					*StatuslineUpdateTimer-variables*
 
 
-g:StatuslineUpdateTimer#enable		*g:StatuslineUpdateTimer#enable*
+						*g:StatuslineUpdateTimer#enable*
+g:StatuslineUpdateTimer#enable
 	default value: 1
 	Plugin enable flag, if you need disable set as 0.
 	Set as before plugin load.
 
-g:StatuslineUpdateTimer#updatetime	*g:StatuslineUpdateTimer#updatetime*
+						*g:StatuslineUpdateTimer#updatetime*
+g:StatuslineUpdateTimer#updatetime
 	default value: &updatetime
 	Timer update interval, same as `updatetime`'s unit.
 
-g:StatuslineUpdateTimer#adjust_minute	*g:StatuslineUpdateTimer#adjust_minute*
+						*g:StatuslineUpdateTimer#adjust_minute*
+g:StatuslineUpdateTimer#adjust_minute
 	default value: 0
 	Timer update interval adjust to fire at next minute+1sec.
 	When this is enabled, no affect |g:StatuslineUpdateTimer#updatetime.|
 
-g:StatuslineUpdateTimer#clockformat	*g:StatuslineUpdateTimer#clockformat*
+						*g:StatuslineUpdateTimer#interval_function*
+g:StatuslineUpdateTimer#interval_function
+	default value: (internal function)
+	Periodic interval called function.
+	Default function call `redrawstatus!`.
+	May set as custom function.
+
+						*g:StatuslineUpdateTimer#clockformat*
+g:StatuslineUpdateTimer#clockformat
 	default value: "%m/%d(%a) %H:%M"
 	Utility function format(strftime style).
+
+
 ------------------------------------------------------------------------------
 COMMANDS					*StatuslineUpdateTimer-commands*
 
-StatuslineUpdateStart				*StatuslineUpdateStart*
+
+						*StatuslineUpdateStart*
+StatuslineUpdateStart
 	Timer start command.
 	When |g:StatuslineUpdateTimer#enable| are disabled, ignore and start.
 	Timer do not sotpped, but no side-effect.
 
-StatuslineUpdateStop				*StatuslineUpdateStop*
+						*StatuslineUpdateStop*
+StatuslineUpdateStop
 	Timer stop command.
 	Timer do not started, but no side-effect.
+
 
 ------------------------------------------------------------------------------
 FUNCTIONS					*StatuslineUpdateTimer-functions*
 
-g:StatuslineUpdateTimer#clock()		*g:StatuslineUpdateTimer#clock()*
+
+						*StatuslineUpdateTimer#clock()*
+StatuslineUpdateTimer#clock()
 	Utility function, Usage at displaying time to statusline.
 	Define format at |g:StatuslineUpdateTimer#clockformat|.
 	return: formatted time string.
+
+						*StatuslineUpdateTimer#emoji_clock*
+StatuslineUpdateTimer#emoji_clock
+	Utility function, Usage at displaying emoji clock to statusline.
+	return: Current time's emoji of the 12-hour.
+
 
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
@@ -104,8 +129,12 @@ TODO						*StatuslineUpdateTimer-todo*
 ==============================================================================
 CHANGELOG					*StatuslineUpdateTimer-changelog*
 
+
+Eternal beta 5
+	Fix problem and add emoji clock.
+
 Eternal beta 4
-	Simplify
+	Simplify.
 
 Eternal beta 3
 	Split adjuster feature in interval calc.
@@ -116,6 +145,7 @@ Eternal beta 2
 
 Eternal beta 1
 	Initial implementation.
+
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
