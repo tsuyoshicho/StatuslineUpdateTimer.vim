@@ -60,6 +60,12 @@ Update interval adjust next min+1sec point.
 If set as enable, `g:StatuslineUpdateTimer#updatetime` are no affect.
 
 ```vim
+g:StatuslineUpdateTimer#interval_function
+```
+
+Interval call function. default `redrawstatus!` call
+
+```vim
 g:StatuslineUpdateTimer#clockformat
 ```
 
@@ -70,10 +76,16 @@ default value: `'%m/%d(%a) %H:%M'`.
 ### Function
 
 ```vim
-g:StatuslineUpdateTimer#clock()
+StatuslineUpdateTimer#clock()
 ```
 
 Return formatted clock string.
+
+```vim
+StatuslineUpdateTimer#emoji_clock()
+```
+
+Return emoji clock string.
 
 ### Use-case
 
@@ -81,7 +93,7 @@ Return formatted clock string.
 Write to `.vimrc`.
 
 ```vim
-set statusline=%{g:StatuslineUpdateTimer#clock()}
+set statusline=%{StatuslineUpdateTimer#clock()}
 ```
 
 #### case 2. lightline at dein
@@ -107,13 +119,9 @@ hook_add = '''
       \   ]
       \ },
       \ 'component_function': {
-      \   'clock': 'LightlineClock',
+      \   'clock': 'StatuslineUpdateTimer#clock',
       \ },
       \ }
-
-  function! LightlineClock()
-    return g:StatuslineUpdateTimer#clock()
-  endfunction
 '''
 ```
 
