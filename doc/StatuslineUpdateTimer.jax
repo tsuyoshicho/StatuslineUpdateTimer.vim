@@ -1,4 +1,4 @@
-*StatuslineUpdateTimer.txt*	日本語ヘルプ
+﻿*StatuslineUpdateTimer.txt*	日本語ヘルプ
 
 Version : Eternal beta 1
 Author  : Tsuyoshi CHO <Tsuyoshi.CHO+develop@Gmail.com>
@@ -49,12 +49,12 @@ https://github.com/tsuyoshicho/StatuslineUpdateTimer.vim
 vim 本体、もしくはプラグインマネージャで導入してください。
 自動でステータスラインの定期更新を行います。
 
+
 ==============================================================================
 インターフェイス				*StatuslineUpdateTimer-interface*
 
 ------------------------------------------------------------------------------
 変数						*StatuslineUpdateTimer-variables*
-
 
 						*g:StatuslineUpdateTimer#enable*
 g:StatuslineUpdateTimer#enable
@@ -89,7 +89,6 @@ g:StatuslineUpdateTimer#clockformat
 ------------------------------------------------------------------------------
 コマンド					*StatuslineUpdateTimer-commands*
 
-
 						*StatuslineUpdateStart*
 StatuslineUpdateStart
 	タイマの開始コマンド。
@@ -104,15 +103,14 @@ StatuslineUpdateStop				*StatuslineUpdateStop*
 ------------------------------------------------------------------------------
 関数						*StatuslineUpdateTimer-functions*
 
-
 						*StatuslineUpdateTimer#clock()*
 StatuslineUpdateTimer#clock()
 	ステータスへの時刻表示のユーティリティ関数。
 	|g:StatuslineUpdateTimer#clockformat|で指定した書式で出力される文字列。
 	戻り値: 書式書き出しの時刻文字列。
 
-						*StatuslineUpdateTimer#emoji_clock*
-StatuslineUpdateTimer#emoji_clock
+						*StatuslineUpdateTimer#emoji_clock()*
+StatuslineUpdateTimer#emoji_clock()
 	ステータスへのemoji時刻表示のユーティリティ関数。
 	戻り値: 現在の時刻の12時間表示のemoji。
 
@@ -120,14 +118,12 @@ StatuslineUpdateTimer#emoji_clock
 ==============================================================================
 TODO						*StatuslineUpdateTimer-todo*
 
-
 - タイマでのリフレッシュにより起動時のスプラッシュ、複数行メッセージなどが更新時に消える。
   現状はvimの動作仕様と思われる、回避策なし。
 
 
 ==============================================================================
 更新履歴					*StatuslineUpdateTimer-changelog*
-
 
 Eternal beta 5
 	不具合修正とemoji clock追加。

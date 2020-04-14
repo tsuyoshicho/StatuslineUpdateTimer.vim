@@ -50,12 +50,12 @@ USAGE						*StatuslineUpdateTimer-usage*
 Install via vim or plugin manager.
 Vim statusline is updated automatically.
 
+
 ==============================================================================
 INTERFACE					*StatuslineUpdateTimer-interface*
 
 ------------------------------------------------------------------------------
 VARIABLES					*StatuslineUpdateTimer-variables*
-
 
 						*g:StatuslineUpdateTimer#enable*
 g:StatuslineUpdateTimer#enable
@@ -90,7 +90,6 @@ g:StatuslineUpdateTimer#clockformat
 ------------------------------------------------------------------------------
 COMMANDS					*StatuslineUpdateTimer-commands*
 
-
 						*StatuslineUpdateStart*
 StatuslineUpdateStart
 	Timer start command.
@@ -106,15 +105,14 @@ StatuslineUpdateStop
 ------------------------------------------------------------------------------
 FUNCTIONS					*StatuslineUpdateTimer-functions*
 
-
 						*StatuslineUpdateTimer#clock()*
 StatuslineUpdateTimer#clock()
 	Utility function, Usage at displaying time to statusline.
 	Define format at |g:StatuslineUpdateTimer#clockformat|.
 	return: formatted time string.
 
-						*StatuslineUpdateTimer#emoji_clock*
-StatuslineUpdateTimer#emoji_clock
+						*StatuslineUpdateTimer#emoji_clock()*
+StatuslineUpdateTimer#emoji_clock()
 	Utility function, Usage at displaying emoji clock to statusline.
 	return: Current time's emoji of the 12-hour.
 
@@ -126,9 +124,9 @@ TODO						*StatuslineUpdateTimer-todo*
   message disappears at refreshed time.
   Currently there are no workarounds which seems to be the operation specification of vim.
 
+
 ==============================================================================
 CHANGELOG					*StatuslineUpdateTimer-changelog*
-
 
 Eternal beta 5
 	Fix problem and add emoji clock.
