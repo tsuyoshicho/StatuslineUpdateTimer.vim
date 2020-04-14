@@ -12,7 +12,7 @@ set cpo&vim
 let g:StatuslineUpdateTimer#clockformat = get(g:, 'StatuslineUpdateTimer#clockformat', '%m/%d(%a) %H:%M')
 
 " generic status clock
-function! StatuslineUpdateTimer#clock()
+function! StatuslineUpdateTimer#clock() abort
   return strftime(g:StatuslineUpdateTimer#clockformat, localtime())
 endfunction
 
@@ -32,7 +32,7 @@ let s:emoji_clock = [
   \ ]
 
 " generic status emoji clock
-function! StatuslineUpdateTimer#emoji_clock()
+function! StatuslineUpdateTimer#emoji_clock() abort
   return s:emoji_clock[str2nr(strftime('%H', localtime())) % len(s:emoji_clock)]
 endfunction
 
