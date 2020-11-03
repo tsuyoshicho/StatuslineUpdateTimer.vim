@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vim documentation: StatuslineUpdateTimer</title>
+<meta name="Generator" content="Vim/8.2">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="help">
+<meta name="settings" content="no_progress,ignore_folding,use_css,no_foldcolumn,expand_tabs,ignore_conceal,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="github">
+<style>
+<!--
+.MissingTag { background-color: black; color: white; }
+.EnglishTag { background-color: gray; color: white; }
+pre { font-family: monospace; color: #24292e; background-color: #ffffff; }
+body { font-family: monospace; color: #24292e; background-color: #ffffff; }
+* { font-size: 1em; }
+.PreProc { color: #d73a49; }
+.String { color: #032f62; }
+.Ignore { color: #babbbc; background-color: #ffffff; padding-bottom: 1px; }
+.Statement { color: #d73a49; }
+-->
+</style>
+</head>
+<body>
+Language: <a href="./StatuslineUpdateTimer.html">en</a> <a href="././StatuslineUpdateTimer.ja.html">ja</a>
+<a name="top"></a><h1>Vim documentation: StatuslineUpdateTimer</h1>
+<a href="./index.html">main help file</a>
+<hr>
+<pre id='vimCodeElement'>
+<a class="String" href="././StatuslineUpdateTimer.html" name="StatuslineUpdateTimer.txt">StatuslineUpdateTimer.txt</a>     a summary
+
+Version : Eternal beta 1
+Author  : Tsuyoshi CHO &lt;Tsuyoshi.CHO+develop@Gmail.com&gt;
+License : MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    &quot;Software&quot;), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+<span class="Statement">    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY</span>
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+<span class="Statement">    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
+}}}
+
+<span class="PreProc">==============================================================================</span>
+<span class="Statement">CONTENTS</span>                                        <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-contents" name="StatuslineUpdateTimer-contents">StatuslineUpdateTimer-contents</a>
+
+INTRODUCTION                    <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-introduction">StatuslineUpdateTimer-introduction</a>
+USAGE                           <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-usage">StatuslineUpdateTimer-usage</a>
+INTERFACE                       <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-interface">StatuslineUpdateTimer-interface</a>
+  VARIABLES                       <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-variables">StatuslineUpdateTimer-variables</a>
+  COMMANDS                        <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-commands">StatuslineUpdateTimer-commands</a>
+  FUNCTIONS                       <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-functions">StatuslineUpdateTimer-functions</a>
+TODO                            <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-todo">StatuslineUpdateTimer-todo</a>
+CHANGELOG                       <a class="Identifier" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-changelog">StatuslineUpdateTimer-changelog</a>
+
+
+<span class="PreProc">==============================================================================</span>
+<span class="Statement">INTRODUCTION</span>                                    <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-introduction" name="StatuslineUpdateTimer-introduction">StatuslineUpdateTimer-introduction</a>
+
+<a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer" name="StatuslineUpdateTimer">StatuslineUpdateTimer</a> is a vim statusline periodic update plugin.
+
+Latest version:
+<span class="String"><a href="https://github.com/tsuyoshicho/StatuslineUpdateTimer.vim">https://github.com/tsuyoshicho/StatuslineUpdateTimer.vim</a></span>
+
+
+<span class="PreProc">==============================================================================</span>
+<span class="Statement">USAGE</span>                                           <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-usage" name="StatuslineUpdateTimer-usage">StatuslineUpdateTimer-usage</a>
+
+Install via vim or plugin manager.
+Vim statusline is updated automatically.
+
+
+<span class="PreProc">==============================================================================</span>
+<span class="Statement">INTERFACE</span>                                       <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-interface" name="StatuslineUpdateTimer-interface">StatuslineUpdateTimer-interface</a>
+
+<span class="PreProc">------------------------------------------------------------------------------</span>
+<span class="Statement">VARIABLES</span>                                       <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-variables" name="StatuslineUpdateTimer-variables">StatuslineUpdateTimer-variables</a>
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#enable" name="g:StatuslineUpdateTimer#enable">g:StatuslineUpdateTimer#enable</a>
+g:StatuslineUpdateTimer#enable
+        default value: 1
+        Plugin enable flag, if you need disable set as 0.
+        Set as before plugin load.
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#updatetime" name="g:StatuslineUpdateTimer#updatetime">g:StatuslineUpdateTimer#updatetime</a>
+g:StatuslineUpdateTimer#updatetime
+        default value: &amp;updatetime
+        Timer update interval, same as <span class="Comment">updatetime</span>'s unit.
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#adjust_minute" name="g:StatuslineUpdateTimer#adjust_minute">g:StatuslineUpdateTimer#adjust_minute</a>
+g:StatuslineUpdateTimer#adjust_minute
+        default value: 0
+        Timer update interval adjust to fire at next minute+1sec.
+        When this is enabled, no affect <a href="https://www.google.com/search?q=vim+%22g:StatuslineUpdateTimer#updatetime.%22&lr=lang_en"><span class="MissingTag">g:StatuslineUpdateTimer#updatetime.</span></a>
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#interval_function" name="g:StatuslineUpdateTimer#interval_function">g:StatuslineUpdateTimer#interval_function</a>
+g:StatuslineUpdateTimer#interval_function
+        default value: (internal function)
+        Periodic interval called function.
+        Default function call <span class="Comment">redrawstatus!</span>.
+        May set as custom function.
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#clockformat" name="g:StatuslineUpdateTimer#clockformat">g:StatuslineUpdateTimer#clockformat</a>
+g:StatuslineUpdateTimer#clockformat
+        default value: &quot;%m/%d(%a) %H:%M&quot;
+        Utility function format(strftime style).
+
+
+<span class="PreProc">------------------------------------------------------------------------------</span>
+<span class="Statement">COMMANDS</span>                                        <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-commands" name="StatuslineUpdateTimer-commands">StatuslineUpdateTimer-commands</a>
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateStart" name="StatuslineUpdateStart">StatuslineUpdateStart</a>
+StatuslineUpdateStart
+        Timer start command.
+        When <a class="Identifier" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#enable">g:StatuslineUpdateTimer#enable</a> are disabled, ignore and start.
+        Timer do not sotpped, but no side-effect.
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateStop" name="StatuslineUpdateStop">StatuslineUpdateStop</a>
+StatuslineUpdateStop
+        Timer stop command.
+        Timer do not started, but no side-effect.
+
+
+<span class="PreProc">------------------------------------------------------------------------------</span>
+<span class="Statement">FUNCTIONS</span>                                       <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-functions" name="StatuslineUpdateTimer-functions">StatuslineUpdateTimer-functions</a>
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer#clock()" name="StatuslineUpdateTimer#clock()">StatuslineUpdateTimer#clock()</a>
+StatuslineUpdateTimer#clock()
+        Utility function, Usage at displaying time to statusline.
+        Define format at <a class="Identifier" href="././StatuslineUpdateTimer.html#g:StatuslineUpdateTimer#clockformat">g:StatuslineUpdateTimer#clockformat</a>.
+        return: formatted time string.
+
+                                                <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer#emoji_clock()" name="StatuslineUpdateTimer#emoji_clock()">StatuslineUpdateTimer#emoji_clock()</a>
+StatuslineUpdateTimer#emoji_clock()
+        Utility function, Usage at displaying emoji clock to statusline.
+        return: Current time's emoji of the 12-hour.
+
+
+<span class="PreProc">==============================================================================</span>
+<span class="Statement">TODO</span>                                            <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-todo" name="StatuslineUpdateTimer-todo">StatuslineUpdateTimer-todo</a>
+
+- Buffer refreshed by timer. As a result, opening splash-string,multiline
+  message disappears at refreshed time.
+  Currently there are no workarounds which seems to be the operation specification of vim.
+
+
+<span class="PreProc">==============================================================================</span>
+<span class="Statement">CHANGELOG</span>                                       <a class="String" href="././StatuslineUpdateTimer.html#StatuslineUpdateTimer-changelog" name="StatuslineUpdateTimer-changelog">StatuslineUpdateTimer-changelog</a>
+
+Eternal beta 5
+        Fix problem and add emoji clock.
+
+Eternal beta 4
+        Simplify.
+
+Eternal beta 3
+        Split adjuster feature in interval calc.
+        Add start/stop commands.
+
+Eternal beta 2
+        Add adjuster feature.
+
+Eternal beta 1
+        Initial implementation.
+
+
+<span class="PreProc">==============================================================================</span>
+vim&#0058;tw=78:ts=8:ft=help:norl:noet:fen:
+</pre>
+<hr>
+<a href="#top">top</a> - <a href="./index.html">main help file</a> - <a href="./tags.html">tag index</a> <br>
+Language: <a href="./StatuslineUpdateTimer.html">en</a> <a href="././StatuslineUpdateTimer.ja.html">ja</a>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
